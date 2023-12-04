@@ -19,7 +19,7 @@ for i = 1:length(mat_files)
     processed_matrix = loaded_data.darkness_matrix;
     
     % Add metadata (string "0") to the loaded_data structure
-    loaded_data.metadata = '2';
+    loaded_data.metadata = '3';
     
     % Save the processed image data and metadata back to the same file
     save(file_path, '-struct', 'loaded_data');

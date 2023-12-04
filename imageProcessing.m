@@ -3,8 +3,8 @@ clc;
 close all;
 
 % Define the path to the data folder
-data_folder = 'data/signatures/Brian/';
-output_folder = 'processed_matrices/Brian';
+data_folder = 'data/signatures/JohnKorean/';
+output_folder = 'processed_matrices/JohnKorean';
 
 % Create the output folder if it doesn't exist
 if ~exist(output_folder, 'dir')
