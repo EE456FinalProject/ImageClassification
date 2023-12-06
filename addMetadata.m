@@ -2,9 +2,9 @@ clear;
 clc;
 close all;
 
-
+% Fix Does not work with new 20x27648
 % Define the path to the folder with processed images
-processed_folder = 'processed_matrices/JohnKorean';
+processed_folder = 'processed_matrices/signatures/Brian';
 
 % Get a list of all processed MAT files in the folder
 mat_files = dir(fullfile(processed_folder, '*.mat'));
