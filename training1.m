@@ -213,12 +213,27 @@ labels_signature = vertcat(labels_signature, temp_labels);
 darkness_vectors_signature = vertcat(darkness_vectors_signature, temp_darkness_vectors);
 
 % seperate into train/val/test
+[trainData1, trainLabel1, validData1, validLabel1, testData1, testLabel1] = splitData(darkness_vectors_class, labels_class);
+[trainData2, trainLabel2, validData2, validLabel2, testData2, testLabel2] = splitData(darkness_vectors_number, labels_number);
+[trainData3, trainLabel3, validData3, validLabel3, testData3, testLabel3] = splitData(darkness_vectors_signature, labels_signature);
+
+% CNN Specifications
+imageSize = [1, 1, 27648];
+numEpochs = 10;
+miniBatchSize = 8;
+
 
 % train NN1
+numberClasses = 2;
+net1 = trainModel(trainData1, trainLabel1, validData1, validLabel1, testData1, testLabel1, imageSize, numEpochs, miniBatchSize, numberClasses);
 
 % train NN2 
+numberClasses = 10;
+net2 = trainModel(trainData2, trainLabel2, validData2, validLabel2, testData2, testLabel2, imageSize, numEpochs, miniBatchSize, numberClasses);
 
 % train NN3
+numberClasses = 6;
+net3 = trainModel(trainData3, trainLabel3, validData3, validLabel3, testData3, testLabel3, imageSize, numEpochs, miniBatchSize, numberClasses);
 
 % export (save) the three NNs
 

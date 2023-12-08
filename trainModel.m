@@ -1,8 +1,4 @@
-clear;
-clc;
-close all;
-
-function net = trainCNNModel(trainData, trainLabel, validData, validLabel, testData, testLabel, imageSize, numEpochs, miniBatchSize)
+function net = trainModel(trainData, trainLabel, validData, validLabel, testData, testLabel, imageSize, numEpochs, miniBatchSize, numberClasses)
     % Reshape the data
     trainImages = reshape(trainData', [imageSize, numel(trainLabel)]);
     validationImages = reshape(validData', [imageSize, numel(validLabel)]);
@@ -41,7 +37,7 @@ function net = trainCNNModel(trainData, trainLabel, validData, validLabel, testD
 
         maxPooling2dLayer(2, 'Stride', 2, 'Padding', 'same')
 
-        fullyConnectedLayer(3)
+        fullyConnectedLayer(numberClasses)
         softmaxLayer
         classificationLayer
     ];
@@ -51,7 +47,7 @@ function net = trainCNNModel(trainData, trainLabel, validData, validLabel, testD
         'MaxEpochs', numEpochs, ...
         'MiniBatchSize', miniBatchSize, ...
         'ValidationData', {validationImages, validationLabels}, ...
-        'ValidationFrequency', 8, ...
+        'ValidationFrequency', 10, ...
         'Plots', 'training-progress', ...
         'Verbose', true, ...
         'L2Regularization', 0.01); % Add weight regularization
