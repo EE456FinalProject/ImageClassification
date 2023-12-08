@@ -6,7 +6,7 @@ close all;
 load('trained_network2.mat', 'net2');
 
 % Load and preprocess your new test data
-newTestData  = load('processed_matrices\signatures\Brian\Brian’s Signature-19_processed.mat'); 
+newTestData  = load('processed_matrices\signatures\Brian\Brian’s Signature-12_processed.mat'); 
 
 fieldNames = fieldnames(newTestData);
 
