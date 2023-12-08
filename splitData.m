@@ -15,24 +15,24 @@ function [trainData, trainLabel, validData, validLabel, testData, testLabel] = p
     testLabel = [];
 
     % Calculate the number of samples for each split
-    num_samples = size(imageData, 1);
-    num_train = round(0.8 * num_samples);
-    num_valid = round(0.1 * num_samples);
+    numSamples = size(imageData, 1);
+    numTrain = round(0.8 * numSamples);
+    numValid = round(0.1 * numSamples);
 
     % Randomly shuffle the data
-    shuffled_indices = randperm(num_samples);
-    shuffled_data = imageData(shuffled_indices, :);
+    shuffledIndices = randperm(numSamples);
+    shuffledData = imageData(shuffledIndices, :);
 
     % Training set
-    trainData = shuffled_data(1:num_train, 1:end-1);
-    trainLabel = shuffled_data(1:num_train, end);
+    trainData = shuffledData(1:numTrain, 1:end-1);
+    trainLabel = shuffledData(1:numTrain, end);
 
     % Validation set
-    validData = shuffled_data(num_train+1:num_train+num_valid, 1:end-1);
-    validLabel = shuffled_data(num_train+1:num_train+num_valid, end);
+    validData = shuffledData(numTrain+1:numTrain+numValid, 1:end-1);
+    validLabel = shuffledData(numTrain+1:numTrain+numValid, end);
 
     % Testing set
-    testData = shuffled_data(num_train+num_valid+1:end, 1:end-1);
-    testLabel = shuffled_data(num_train+num_valid+1:end, end);
+    testData = shuffledData(numTrain+numValid+1:end, 1:end-1);
+    testLabel = shuffledData(numTrain+numValid+1:end, end);
 end
 
