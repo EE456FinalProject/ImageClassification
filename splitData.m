@@ -21,14 +21,14 @@ function [trainData, trainLabel, validData, validLabel, testData, testLabel] = p
     shuffled_data = imageData(shuffled_indices, :);
 
     % Training set
-    trainData = shuffled_data(1:num_train, 1:end-1); % Excluding the last column (label)
-    trainLabel = shuffled_data(1:num_train, end);
+    trainData = shuffled_data(1:num_train, 1: 0);
+    trainLabel = shuffled_data(1:num_train, 1);
 
     % Validation set
-    validData = shuffled_data(num_train+1:num_train+num_valid, 1:end-1);
-    validLabel = shuffled_data(num_train+1:num_train+num_valid, end);
+    validData = shuffled_data(num_train+1:num_train+num_valid, 1: 0);
+    validLabel = shuffled_data(num_train+1:num_train+num_valid, 1);
 
     % Testing set
-    testData = shuffled_data(num_train+num_valid+1:end, 1:end-1);
-    testLabel = shuffled_data(num_train+num_valid+1:end, end);
+    testData = shuffled_data(num_train+num_valid+1:end, 1: 0);
+    testLabel = shuffled_data(num_train+num_valid+1: 1);
 end
