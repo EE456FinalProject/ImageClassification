@@ -2,7 +2,10 @@ clear;
 clc;
 close all;
 
-function [trainData, trainLabel, validData, validLabel, testData, testLabel] = processImageData(imageData)
+function [trainData, trainLabel, validData, validLabel, testData, testLabel] = processImageData(darkness_matrices, labels)
+    % Combine darkness_matrices and labels into a single matrix
+    imageData = [darkness_matrices, labels];
+
     % Initialize the matrices for training, validation, and testing
     trainData = [];
     trainLabel = [];
@@ -21,14 +24,15 @@ function [trainData, trainLabel, validData, validLabel, testData, testLabel] = p
     shuffled_data = imageData(shuffled_indices, :);
 
     % Training set
-    trainData = shuffled_data(1:num_train, 1: 1);
-    trainLabel = shuffled_data(1:num_train, 2);
+    trainData = shuffled_data(1:num_train, 1:end-1);
+    trainLabel = shuffled_data(1:num_train, end);
 
     % Validation set
-    validData = shuffled_data(num_train+1:num_train+num_valid, 1: 1);
-    validLabel = shuffled_data(num_train+1:num_train+num_valid, 2);
+    validData = shuffled_data(num_train+1:num_train+num_valid, 1:end-1);
+    validLabel = shuffled_data(num_train+1:num_train+num_valid, end);
 
     % Testing set
-    testData = shuffled_data(num_train+num_valid+1:end, 1: 1);
-    testLabel = shuffled_data(num_train+num_valid+1: 2);
+    testData = shuffled_data(num_train+num_valid+1:end, 1:end-1);
+    testLabel = shuffled_data(num_train+num_valid+1:end, end);
 end
+

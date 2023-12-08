@@ -63,7 +63,4 @@ function net = trainCNNModel(trainData, trainLabel, validData, validLabel, testD
     predictedLabels = classify(net, testImages);
     accuracy = sum(predictedLabels == testLabels) / numel(testLabels);
     fprintf('Accuracy on the test set: %.2f%%\n', accuracy * 100);
-
-    % Save the trained network to a file
-    save('trained_network.mat', 'net');
 end
