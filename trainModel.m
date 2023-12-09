@@ -14,7 +14,7 @@ function net = trainModel(trainData, trainLabel, validData, validLabel, testData
         imageInputLayer(imageSize)
 
         % layer 1
-        convolution2dLayer(3, 32, 'Padding', 'same')
+        convolution2dLayer(3, 128, 'Padding', 'same')
         batchNormalizationLayer
         reluLayer
         dropoutLayer(0.2) 
@@ -30,7 +30,7 @@ function net = trainModel(trainData, trainLabel, validData, validLabel, testData
         maxPooling2dLayer(2, 'Stride', 2, 'Padding', 'same')
 
         % layer 3
-        convolution2dLayer(3, 128, 'Padding', 'same')
+        convolution2dLayer(3, 32, 'Padding', 'same')
         batchNormalizationLayer
         reluLayer
         dropoutLayer(0.2)

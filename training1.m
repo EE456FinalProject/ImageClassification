@@ -451,7 +451,7 @@ save('testLabel3.mat', 'testLabel3');
 
 % CNN Specifications -----------------------------------------------------
 imageSize = [1, 1, 27648];
-numEpochs = 10;
+numEpochs = 20;
 miniBatchSize = 8;
 
 % train NN1
