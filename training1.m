@@ -211,6 +211,10 @@ validLabel1 = vertcat(validLabel1, tempValidLabel);
 testData1 = vertcat(testData1, tempTestData);
 testLabel1 = vertcat(testLabel1, tempTestLabel);
 
+% Save testing dataset1
+save('testData1.mat', 'testData1');
+save('testLabel1.mat', 'testLabel1');
+
 % labels and vectors for the second NN ------------------------------------
 trainData2 = [];
 trainLabel2 = [];
@@ -332,6 +336,10 @@ validLabel2 = vertcat(validLabel2, tempValidLabel);
 testData2 = vertcat(testData2, tempTestData);
 testLabel2 = vertcat(testLabel2, tempTestLabel);
 
+% Save testing dataset2
+save('testData2.mat', 'testData2');
+save('testLabel2.mat', 'testLabel2');
+
 % labels and vectors for the third NN ------------------------------------
 trainData3 = [];
 trainLabel3 = [];
@@ -437,11 +445,14 @@ shuffledIndices = randperm(size(validData3, 1));
 validData3 = validData3(shuffledIndices, :);
 validLabel3 = validLabel3(shuffledIndices, :);
 
-% CNN Specifications
+% Save testing dataset3
+save('testData3.mat', 'testData3');
+save('testLabel3.mat', 'testLabel3');
+
+% CNN Specifications -----------------------------------------------------
 imageSize = [1, 1, 27648];
 numEpochs = 10;
 miniBatchSize = 8;
-
 
 % train NN1
 numberClasses = 2;
@@ -455,7 +466,7 @@ net2 = trainModel(trainData2, trainLabel2, validData2, validLabel2, testData2, t
 numberClasses = 6;
 net3 = trainModel(trainData3, trainLabel3, validData3, validLabel3, testData3, testLabel3, imageSize, numEpochs, miniBatchSize, numberClasses);
 
-% export (save) the three NNs
+% export (save) the three NNs --------------------------------------------
 % Save net1
 save('net1.mat', 'net1');
 
