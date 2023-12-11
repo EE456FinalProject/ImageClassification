@@ -37,6 +37,15 @@ function net = trainModel(trainData, trainLabel, validData, validLabel, testData
 
         maxPooling2dLayer(2, 'Stride', 2, 'Padding', 'same')
 
+        % layer 4
+        convolution2dLayer(3, 32, 'Padding', 'same')
+        batchNormalizationLayer
+        reluLayer
+        dropoutLayer(0.2)
+
+        maxPooling2dLayer(2, 'Stride', 2, 'Padding', 'same')
+
+
         fullyConnectedLayer(numberClasses)
         softmaxLayer
         classificationLayer
