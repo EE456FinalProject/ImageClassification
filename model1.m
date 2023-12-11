@@ -6,14 +6,16 @@ load net1.mat
 load net2.mat
 load net3.mat
 
+load testData1_1.mat
 load testData2.mat
 load testData3.mat
 
+load testLabel1_1.mat
 load testLabel2.mat
 load testLabel3.mat
 
-data = vertcat(testData2, testData3);
-label = categorical(vertcat(testLabel2, testLabel3));
+data = vertcat(testData1_1, testData2, testData3);
+label = categorical(vertcat(testLabel1_1, testLabel2, testLabel3));
 
 len = size(data, 1);
 
@@ -40,6 +42,7 @@ for i = 1:len
     % check if the prediction is correct
     if predictedLabel2 ~= target_label
         error = error + 1;
+        fprintf("Failed to predict %d\n", target_label);
     end
 end
 
